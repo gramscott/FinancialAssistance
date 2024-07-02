@@ -1,5 +1,6 @@
 import jakarta.validation.constraints.NotBlank;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class User {
@@ -10,7 +11,7 @@ public class User {
     private String name;
 
     @NotBlank
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @NotBlank
     private Address residentialAddress;
@@ -19,7 +20,7 @@ public class User {
 
     private String bankAccount;
 
-    private User(LocalDateTime registrationDate, String name, LocalDateTime dateOfBirth, Address residentialAddress, Address correspondenceAddress, String bankAccount) {
+    private User(LocalDateTime registrationDate, String name, LocalDate dateOfBirth, Address residentialAddress, Address correspondenceAddress, String bankAccount) {
         this.registrationDate = registrationDate;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -38,14 +39,6 @@ public class User {
 
     public LocalDateTime getRegistrationDate() {
         return registrationDate;
-    }
-
-    public LocalDateTime getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDateTime dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public Address getResidentialAddress() {
@@ -70,5 +63,13 @@ public class User {
 
     public void setBankAccount(String bankAccount) {
         this.bankAccount = bankAccount;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }
