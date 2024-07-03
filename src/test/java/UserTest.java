@@ -10,10 +10,11 @@ public class UserTest {
 
     User user2;
 
-    @Before("User")
-    public void setUp(){
-        user1 = new User(LocalDateTime.now(), "Graeme Scott", LocalDate.of(1996,18,9), residentialAddress, "123 Main St", );
-    }
+    BankAccount bankAccount;
+
+    Address address;
+
+
 
 
 }

@@ -1,17 +1,20 @@
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class User {
 
-    private final LocalDateTime registrationDate;
+
+    private final Date registrationDate;
 
     @NotBlank
     private String name;
 
     @NotBlank
     private LocalDate dateOfBirth;
+
+    private String nationalInsuranceNumber;
 
     @NotBlank
     private Address residentialAddress;
@@ -20,10 +23,11 @@ public class User {
 
     private BankAccount bankAccount;
 
-    User(LocalDateTime registrationDate, String name, LocalDate dateOfBirth, Address residentialAddress, Address correspondenceAddress, BankAccount bankAccount) {
+    User( String name, LocalDate dateOfBirth, String nationalInsuranceNumber, Address residentialAddress, Address correspondenceAddress, BankAccount bankAccount) {
+        this.nationalInsuranceNumber = nationalInsuranceNumber;
         this.residentialAddress = residentialAddress;
         this.correspondenceAddress = correspondenceAddress;
-        this.registrationDate = new LocalDateTime;
+        this.registrationDate = new Date();
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.bankAccount = bankAccount;
@@ -35,10 +39,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
     }
 
     public LocalDate getDateOfBirth() {
@@ -71,5 +71,18 @@ public class User {
 
     public void setCorrespondenceAddress(Address correspondenceAddress) {
         this.correspondenceAddress = correspondenceAddress;
+    }
+
+    public String getNationalInsuranceNumber() {
+        return nationalInsuranceNumber;
+    }
+
+    public void setNationalInsuranceNumber(String nationalInsuranceNumber) {
+        this.nationalInsuranceNumber = nationalInsuranceNumber;
+    }
+
+
+    public Date getRegistrationDate() {
+        return registrationDate;
     }
 }
