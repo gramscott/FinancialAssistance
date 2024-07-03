@@ -1,8 +1,6 @@
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class UserTest {
 
@@ -18,7 +16,7 @@ public class UserTest {
 
     @BeforeEach()
     public void setUp(){
-        user1 = new User("Graeme Scott", LocalDate.of(1996,9,18), "G3902923", address1, address1, bankAccount1);
+        user1 = new User("Graeme Scott", LocalDate.of(1996,9,18), "G3902923", address1, address1, bankAccount1, true);
     }
 
 

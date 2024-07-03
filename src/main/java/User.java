@@ -23,10 +23,13 @@ public class User {
 
     private BankAccount bankAccount;
 
-    User( String name, LocalDate dateOfBirth, String nationalInsuranceNumber, Address residentialAddress, Address correspondenceAddress, BankAccount bankAccount) {
+    private boolean isProspect;
+
+    User(String name, LocalDate dateOfBirth, String nationalInsuranceNumber, Address residentialAddress, Address correspondenceAddress, BankAccount bankAccount, boolean isProspect) {
         this.nationalInsuranceNumber = nationalInsuranceNumber;
         this.residentialAddress = residentialAddress;
         this.correspondenceAddress = correspondenceAddress;
+        this.isProspect = isProspect;
         this.registrationDate = new Date();
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -84,5 +87,13 @@ public class User {
 
     public Date getRegistrationDate() {
         return registrationDate;
+    }
+
+    public boolean isProspect() {
+        return isProspect;
+    }
+
+    public void setProspect(boolean prospect) {
+        isProspect = prospect;
     }
 }
