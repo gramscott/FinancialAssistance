@@ -2,6 +2,7 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Optional;
 
 public class User {
 
@@ -68,16 +69,16 @@ public class User {
         this.residentialAddress = residentialAddress;
     }
 
-    public Address getCorrespondenceAddress() {
-        return correspondenceAddress;
+    public Optional <Address> getCorrespondenceAddress() {
+        return Optional.ofNullable(correspondenceAddress);
     }
 
     public void setCorrespondenceAddress(Address correspondenceAddress) {
         this.correspondenceAddress = correspondenceAddress;
     }
 
-    public String getNationalInsuranceNumber() {
-        return nationalInsuranceNumber;
+    public Optional<String> getNationalInsuranceNumber() {
+        return Optional.ofNullable(nationalInsuranceNumber);
     }
 
     public void setNationalInsuranceNumber(String nationalInsuranceNumber) {
