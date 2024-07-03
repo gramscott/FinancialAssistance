@@ -14,18 +14,17 @@ public class User {
     private LocalDate dateOfBirth;
 
     @NotBlank
-    private Address residentialAddress;
+    private String residentialAddress;
 
-    private Address correspondenceAddress;
+    private String correspondenceAddress;
 
     private String bankAccount;
 
-    private User(LocalDateTime registrationDate, String name, LocalDate dateOfBirth, Address residentialAddress, Address correspondenceAddress, String bankAccount) {
-        this.registrationDate = registrationDate;
+    User(LocalDateTime registrationDate, String name, LocalDate dateOfBirth, String residentialAddress, String bankAccount) {
+        this.registrationDate = new LocalDateTime;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.residentialAddress = residentialAddress;
-        this.correspondenceAddress = correspondenceAddress;
         this.bankAccount = bankAccount;
     }
 
@@ -41,21 +40,14 @@ public class User {
         return registrationDate;
     }
 
-    public Address getResidentialAddress() {
+    public String getResidentialAddress() {
         return residentialAddress;
     }
 
-    public void setResidentialAddress(Address residentialAddress) {
+    public void setResidentialAddress(String residentialAddress) {
         this.residentialAddress = residentialAddress;
     }
 
-    public Address getCorrespondenceAddress() {
-        return correspondenceAddress;
-    }
-
-    public void setCorrespondenceAddress(Address correspondenceAddress) {
-        this.correspondenceAddress = correspondenceAddress;
-    }
 
     public String getBankAccount() {
         return bankAccount;
