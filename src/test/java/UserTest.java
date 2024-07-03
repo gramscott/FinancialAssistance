@@ -1,6 +1,4 @@
 import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,11 +12,8 @@ public class UserTest {
 
     @Before("User")
     public void setUp(){
-        user1 = new User(LocalDateTime.now(), "Graeme Scott", LocalDate.of(1996,18,9), "123 Main St", "12345");
+        user1 = new User(LocalDateTime.now(), "Graeme Scott", LocalDate.of(1996,18,9), residentialAddress, "123 Main St", );
     }
 
-    @Test
-    public void testName(){
 
-    }
 }

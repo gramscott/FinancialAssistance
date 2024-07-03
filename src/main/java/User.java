@@ -14,17 +14,18 @@ public class User {
     private LocalDate dateOfBirth;
 
     @NotBlank
-    private String residentialAddress;
+    private Address residentialAddress;
 
-    private String correspondenceAddress;
+    private Address correspondenceAddress;
 
-    private String bankAccount;
+    private BankAccount bankAccount;
 
-    User(LocalDateTime registrationDate, String name, LocalDate dateOfBirth, String residentialAddress, String bankAccount) {
+    User(LocalDateTime registrationDate, String name, LocalDate dateOfBirth, Address residentialAddress, Address correspondenceAddress, BankAccount bankAccount) {
+        this.residentialAddress = residentialAddress;
+        this.correspondenceAddress = correspondenceAddress;
         this.registrationDate = new LocalDateTime;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.residentialAddress = residentialAddress;
         this.bankAccount = bankAccount;
     }
 
@@ -40,28 +41,35 @@ public class User {
         return registrationDate;
     }
 
-    public String getResidentialAddress() {
-        return residentialAddress;
-    }
-
-    public void setResidentialAddress(String residentialAddress) {
-        this.residentialAddress = residentialAddress;
-    }
-
-
-    public String getBankAccount() {
-        return bankAccount;
-    }
-
-    public void setBankAccount(String bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public Address getResidentialAddress() {
+        return residentialAddress;
+    }
+
+    public void setResidentialAddress(Address residentialAddress) {
+        this.residentialAddress = residentialAddress;
+    }
+
+    public Address getCorrespondenceAddress() {
+        return correspondenceAddress;
+    }
+
+    public void setCorrespondenceAddress(Address correspondenceAddress) {
+        this.correspondenceAddress = correspondenceAddress;
     }
 }
