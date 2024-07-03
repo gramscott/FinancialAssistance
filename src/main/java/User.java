@@ -1,7 +1,9 @@
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 public class User {
@@ -26,6 +28,11 @@ public class User {
 
     private boolean isProspect;
 
+    private List<Evidence> nameHistory;
+    private List<Evidence> addressHistory;
+    private List<Evidence> bankAccountHistory;
+
+
     User(String name, LocalDate dateOfBirth, String nationalInsuranceNumber, Address residentialAddress, Address correspondenceAddress, BankAccount bankAccount, boolean isProspect) {
         this.nationalInsuranceNumber = nationalInsuranceNumber;
         this.residentialAddress = residentialAddress;
@@ -35,6 +42,16 @@ public class User {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.bankAccount = bankAccount;
+
+
+        this.nameHistory = new ArrayList<>();
+        this.addressHistory = new ArrayList<>();
+        this.bankAccountHistory = new ArrayList<>();
+
+        this.nameHistory.add(new Evidence(name));
+        this.addressHistory.add(new Evidence(residentialAddress));
+        this.bankAccountHistory.add(new Evidence(bankAccount));
+
     }
 
     public String getName() {
