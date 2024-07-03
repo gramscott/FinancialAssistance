@@ -1,17 +1,24 @@
-import java.time.LocalDate;
+import java.util.Date;
 
-public class Evidence {
+public class Evidence<T> {
     
-    private final Object evidence;
+    private final T evidence;
+    private final Date dateProvided;
 
-    public Evidence(Object evidence) {
+
+    public Evidence(T evidence) {
         this.evidence = evidence;
+        this.dateProvided = new Date();
     }
 
-    public Object getEvidence() {
+
+    public T getEvidence() {
         return evidence;
     }
 
+    public Date getDateProvided() {
+        return dateProvided;
+    }
 
 
 }

@@ -1,117 +1,70 @@
-import jakarta.validation.constraints.NotBlank;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 public class User {
-
-
-    private final Date registrationDate;
-
-    @NotBlank
+    private final Date dateOfRegistration;
     private String name;
-
-    @NotBlank
-    private LocalDate dateOfBirth;
-
+    private Date dateOfBirth;
     private String nationalInsuranceNumber;
-
-    @NotBlank
     private Address residentialAddress;
-
     private Address correspondenceAddress;
-
     private BankAccount bankAccount;
-
     private boolean isProspect;
 
-    private List<Evidence> nameHistory;
-    private List<Evidence> addressHistory;
-    private List<Evidence> bankAccountHistory;
+    private List<Evidence<Address>> addressHistory;
+    private List<Evidence<BankAccount>> bankAccountHistory;
+    private List<Evidence<String>> nameHistory;
 
-
-    User(String name, LocalDate dateOfBirth, String nationalInsuranceNumber, Address residentialAddress, Address correspondenceAddress, BankAccount bankAccount, boolean isProspect) {
-        this.nationalInsuranceNumber = nationalInsuranceNumber;
-        this.residentialAddress = residentialAddress;
-        this.correspondenceAddress = correspondenceAddress;
-        this.isProspect = isProspect;
-        this.registrationDate = new Date();
+    public User(String name, Date dateOfBirth, Address residentialAddress, BankAccount bankAccount) {
+        this.dateOfRegistration = new Date();
         this.name = name;
         this.dateOfBirth = dateOfBirth;
+        this.residentialAddress = residentialAddress;
         this.bankAccount = bankAccount;
-
+        this.isProspect = true;
 
         this.nameHistory = new ArrayList<>();
         this.addressHistory = new ArrayList<>();
         this.bankAccountHistory = new ArrayList<>();
 
-        this.nameHistory.add(new Evidence(name));
-        this.addressHistory.add(new Evidence(residentialAddress));
-        this.bankAccountHistory.add(new Evidence(bankAccount));
+        this.nameHistory.add(new Evidence<>(name));
+        this.addressHistory.add(new Evidence<>(residentialAddress));
+        this.bankAccountHistory.add(new Evidence<>(bankAccount));
+    }
 
+    public Date getDateOfRegistration() {
+        return dateOfRegistration;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public BankAccount getBankAccount() {
-        return bankAccount;
-    }
-
-    public void setBankAccount(BankAccount bankAccount) {
-        this.bankAccount = bankAccount;
-    }
-
-    public Address getResidentialAddress() {
-        return residentialAddress;
-    }
-
-    public void setResidentialAddress(Address residentialAddress) {
-        this.residentialAddress = residentialAddress;
-    }
-
-    public Optional <Address> getCorrespondenceAddress() {
-        return Optional.ofNullable(correspondenceAddress);
-    }
-
-    public void setCorrespondenceAddress(Address correspondenceAddress) {
-        this.correspondenceAddress = correspondenceAddress;
     }
 
     public Optional<String> getNationalInsuranceNumber() {
         return Optional.ofNullable(nationalInsuranceNumber);
     }
 
-    public void setNationalInsuranceNumber(String nationalInsuranceNumber) {
-        this.nationalInsuranceNumber = nationalInsuranceNumber;
+    public Address getResidentialAddress() {
+        return residentialAddress;
     }
 
+    public Optional<Address> getCorrespondenceAddress() {
+        return Optional.ofNullable(correspondenceAddress);
+    }
 
-    public Date getRegistrationDate() {
-        return registrationDate;
+    public BankAccount getBankAccount() {
+        return bankAccount;
     }
 
     public boolean isProspect() {
         return isProspect;
     }
 
-    public void setProspect(boolean prospect) {
-        isProspect = prospect;
-    }
+
 }
