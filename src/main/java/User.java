@@ -1,7 +1,10 @@
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.List;
+
+
 public class User {
     private LocalDate dateOfRegistration;
     private Evidence activeName;
@@ -43,5 +46,28 @@ public class User {
         this.activeName = newName;
         this.nameHistory.add(newName);
     }
+
+    public String getActiveAddress() {
+        if (correspondenceAddress != null){
+            return correspondenceAddress.getValue();
+        }
+        return residentialAddress.getValue();
+    }
+
+    public void addCorrespondenceAddress(String address) {
+        Evidence newAddress = new Evidence(address);
+        this.addressHistory.add(newAddress);
+    }
+
+    public String getActiveBankAccount() {
+        return bankAccount.getValue();
+    }
+
+    public void addBankAccount(String bankAccount) {
+        Evidence newBankAccount = new Evidence(bankAccount);
+        this.bankAccount = newBankAccount;
+        this.bankAccountHistory.add(newBankAccount);
+    }
+
 
 }

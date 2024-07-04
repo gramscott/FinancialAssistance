@@ -20,7 +20,7 @@ public class UserTest {
 
     @BeforeEach()
     public void setUp(){
-        user = new User("Graeme Scott", LocalDate.of(1996,9,18), "Narnia st",  "111111");
+        user = new User("Graeme Scott", LocalDate.of(1996,9,18), "Narnia St",  "111111");
     }
 
     @Test
@@ -28,6 +28,20 @@ public class UserTest {
         assertEquals("Graeme Scott", user.getActiveName());
         user.addName("Allana");
         assertEquals("Allana", user.getActiveName());
+    }
+
+    @Test
+    public void testGetActiveAddress(){
+        assertEquals("Narnia St", user.getActiveAddress());
+        user.addCorrespondenceAddress("Narnia St");
+        assertEquals("Narnia St", user.getActiveAddress());
+    }
+
+    @Test
+    public void testGetActiveBankAccount(){
+        assertEquals("111111", user.getActiveBankAccount());
+        user.addBankAccount("222222222");
+        assertEquals("222222222", user.getActiveBankAccount());
     }
 
 
