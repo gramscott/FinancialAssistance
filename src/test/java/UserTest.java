@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
@@ -19,19 +20,17 @@ public class UserTest {
 
     @BeforeEach()
     public void setUp(){
-        user = new User("Graeme Scott", new Date(1996,9,18), address,  bankAccount);
-        address = new Address("Narnia Road", "South Lanarkshire", "Ml11 9LQ");
-        bankAccount = new BankAccount("12345678", "22-22-22");
+        user = new User("Graeme Scott", LocalDate.of(1996,9,18), "Narnia st",  "111111");
     }
 
     @Test
-    public void testUserCreation(){
-        assertEquals("Graeme Scott", user.getName());
-        assertEquals(address, user.getResidentialAddress());
-        assertEquals(bankAccount, user.getBankAccount());
-        assertTrue(user.isProspect());
-
+    public void testGetActiveName(){
+        assertEquals("Graeme Scott", user.getActiveName());
+        user.addName("Allana");
+        assertEquals("Allana", user.getActiveName());
     }
+
+
 
 
 
