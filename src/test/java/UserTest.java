@@ -5,8 +5,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
 
@@ -42,6 +41,13 @@ public class UserTest {
     @Test
     public void testGetAge(){
         assertEquals(27, user.getAge());
+    }
+
+    @Test
+    public void testSetNationalInsuranceNumber(){
+        assertTrue(user.isProspect);
+        user.setNationalInsuranceNumber("G3hfhfhf");
+        assertFalse(user.isProspect);
     }
 
 

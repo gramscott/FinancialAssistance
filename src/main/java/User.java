@@ -13,7 +13,7 @@ public class User {
     private Evidence residentialAddress;
     private Evidence correspondenceAddress;
     private Evidence bankAccount;
-    private boolean isProspect;
+    boolean isProspect;
     private List<Evidence> nameHistory;
     private List<Evidence> addressHistory;
     private List<Evidence> bankAccountHistory;
@@ -72,5 +72,10 @@ public class User {
 
     public int getAge() {
         return Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
+
+    public void setNationalInsuranceNumber(String nationalInsuranceNumber) {
+        this.nationalInsuranceNumber = nationalInsuranceNumber;
+        this.isProspect = false;
     }
 }
