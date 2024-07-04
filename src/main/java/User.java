@@ -1,3 +1,5 @@
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -7,11 +9,18 @@ import java.util.List;
 
 public class User {
     private LocalDate dateOfRegistration;
-    private Evidence activeName;
+
+    @NotBlank
+    private Evidence name;
+
+    @NotBlank
     private LocalDate dateOfBirth;
     private String nationalInsuranceNumber;
+
+    @NotBlank
     private Evidence residentialAddress;
     private Evidence correspondenceAddress;
+    @NotBlank
     private Evidence bankAccount;
     boolean isProspect;
     private List<Evidence> nameHistory;
@@ -20,7 +29,7 @@ public class User {
 
     public User(String name, LocalDate dateOfBirth, String residentialAddress, String bankAccount) {
         this.dateOfRegistration = LocalDate.now();
-        this.activeName = new Evidence(name);
+        this.name = new Evidence(name);
         this.dateOfBirth = dateOfBirth;
         this.residentialAddress = new Evidence(residentialAddress);
         this.bankAccount = new Evidence(bankAccount);
@@ -30,24 +39,22 @@ public class User {
         this.addressHistory = new ArrayList<>();
         this.bankAccountHistory = new ArrayList<>();
 
-        this.nameHistory.add(this.activeName);
+        this.nameHistory.add(this.name);
         this.addressHistory.add(this.residentialAddress);
         this.bankAccountHistory.add(this.bankAccount);
     }
 
-    public String getActiveName() {
-        return activeName.getValue();
+    public String getName() {
+        return name.getValue();
     }
-
-
 
     public void addName(String name) {
         Evidence newName = new Evidence(name);
-        this.activeName = newName;
+        this.name = newName;
         this.nameHistory.add(newName);
     }
 
-    public String getActiveAddress() {
+    public String getAddress() {
         if (correspondenceAddress != null){
             return correspondenceAddress.getValue();
         }
@@ -59,7 +66,7 @@ public class User {
         this.addressHistory.add(newAddress);
     }
 
-    public String getActiveBankAccount() {
+    public String getBankAccount() {
         return bankAccount.getValue();
     }
 
@@ -84,4 +91,9 @@ public class User {
         this.residentialAddress = newAddress;
         this.addressHistory.add(newAddress);
     }
+
+    public LocalDate getDateOfRegistration() {
+        return dateOfRegistration;
+    }
+
 }

@@ -16,24 +16,24 @@ public class UserTest {
     }
 
     @Test
-    public void testGetActiveName(){
-        assertEquals("Graeme Scott", user.getActiveName());
+    public void testGetName(){
+        assertEquals("Graeme Scott", user.getName());
         user.addName("Allana");
-        assertEquals("Allana", user.getActiveName());
+        assertEquals("Allana", user.getName());
     }
 
     @Test
-    public void testGetActiveAddress(){
-        assertEquals("Narnia St", user.getActiveAddress());
+    public void testGetAddress(){
+        assertEquals("Narnia St", user.getAddress());
         user.addCorrespondenceAddress("Narnia St");
-        assertEquals("Narnia St", user.getActiveAddress());
+        assertEquals("Narnia St", user.getAddress());
     }
 
     @Test
-    public void testGetActiveBankAccount(){
-        assertEquals("111111", user.getActiveBankAccount());
+    public void testGetBankAccount(){
+        assertEquals("111111", user.getBankAccount());
         user.addBankAccount("222222222");
-        assertEquals("222222222", user.getActiveBankAccount());
+        assertEquals("222222222", user.getBankAccount());
     }
 
     @Test
@@ -51,25 +51,25 @@ public class UserTest {
     @Test
     public void testAddName(){
         user.addName("Jamie");
-        assertEquals("Jamie", user.getActiveName());
+        assertEquals("Jamie", user.getName());
     }
 
     @Test
     public void testAddResidentialAddress(){
         user.addResidentialAddress("address");
-        assertEquals("address", user.getActiveAddress());
+        assertEquals("address", user.getAddress());
     }
 
     @Test
     public void testAddCorrespondingAddress(){
         user.addCorrespondenceAddress("Narnia St");
-        assertEquals("Narnia St", user.getActiveAddress());
+        assertEquals("Narnia St", user.getAddress());
     }
 
     @Test
     public void testAddBankAccount(){
         user.addBankAccount("111111");
-        assertEquals("111111", user.getActiveBankAccount());
+        assertEquals("111111", user.getBankAccount());
     }
 
 
