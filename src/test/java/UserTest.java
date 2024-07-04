@@ -2,9 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
@@ -66,6 +64,12 @@ public class UserTest {
     public void testAddCorrespondingAddress(){
         user.addCorrespondenceAddress("Narnia St");
         assertEquals("Narnia St", user.getActiveAddress());
+    }
+
+    @Test
+    public void testAddBankAccount(){
+        user.addBankAccount("111111");
+        assertEquals("111111", user.getActiveBankAccount());
     }
 
 
