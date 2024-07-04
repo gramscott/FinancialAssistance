@@ -13,11 +13,6 @@ public class UserTest {
 
     User user;
 
-    BankAccount bankAccount;
-
-    Address address;
-
-
     @BeforeEach()
     public void setUp(){
         user = new User("Graeme Scott", LocalDate.of(1996,9,18), "Narnia St",  "111111");
@@ -42,6 +37,11 @@ public class UserTest {
         assertEquals("111111", user.getActiveBankAccount());
         user.addBankAccount("222222222");
         assertEquals("222222222", user.getActiveBankAccount());
+    }
+
+    @Test
+    public void testGetAge(){
+        assertEquals(27, user.getAge());
     }
 
 

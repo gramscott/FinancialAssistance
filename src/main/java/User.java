@@ -70,4 +70,7 @@ public class User {
     }
 
 
+    public int getAge() {
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
 }
