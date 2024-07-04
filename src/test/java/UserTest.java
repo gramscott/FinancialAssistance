@@ -50,6 +50,12 @@ public class UserTest {
         assertFalse(user.isProspect);
     }
 
+    @Test
+    public void testAddName(){
+        user.addName("Jamie");
+        assertEquals("Jamie", user.getActiveName());
+    }
+
 
 
 
