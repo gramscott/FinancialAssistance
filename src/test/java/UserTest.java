@@ -56,6 +56,17 @@ public class UserTest {
         assertEquals("Jamie", user.getActiveName());
     }
 
+    @Test
+    public void testAddResidentialAddress(){
+        user.addResidentialAddress("address");
+        assertEquals("address", user.getActiveAddress());
+    }
+
+    @Test
+    public void testAddCorrespondingAddress(){
+        user.addCorrespondenceAddress("Narnia St");
+        assertEquals("Narnia St", user.getActiveAddress());
+    }
 
 
 

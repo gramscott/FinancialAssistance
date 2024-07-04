@@ -78,4 +78,10 @@ public class User {
         this.nationalInsuranceNumber = nationalInsuranceNumber;
         this.isProspect = false;
     }
+
+    public void addResidentialAddress(String address) {
+        Evidence newAddress = new Evidence(address);
+        this.residentialAddress = newAddress;
+        this.addressHistory.add(newAddress);
+    }
 }
