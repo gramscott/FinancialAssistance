@@ -1,11 +1,8 @@
 import jakarta.validation.constraints.NotBlank;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.List;
-
 
 public class User {
     private LocalDate dateOfRegistration;
@@ -43,6 +40,23 @@ public class User {
         this.addressHistory.add(this.residentialAddress);
         this.bankAccountHistory.add(this.bankAccount);
     }
+    public User(String name, LocalDate dateOfBirth, String residentialAddress, String bankAccount, String nationalInsuranceNumber) {
+        this.dateOfRegistration = LocalDate.now();
+        this.name = new Evidence(name);
+        this.dateOfBirth = dateOfBirth;
+        this.residentialAddress = new Evidence(residentialAddress);
+        this.bankAccount = new Evidence(bankAccount);
+        this.nationalInsuranceNumber = nationalInsuranceNumber;
+        this.isProspect = false;
+
+        this.nameHistory = new ArrayList<>();
+        this.addressHistory = new ArrayList<>();
+        this.bankAccountHistory = new ArrayList<>();
+
+        this.nameHistory.add(this.name);
+        this.addressHistory.add(this.residentialAddress);
+        this.bankAccountHistory.add(this.bankAccount);
+    }
 
     public String getName() {
         return name.getValue();
@@ -55,7 +69,7 @@ public class User {
     }
 
     public String getAddress() {
-        if (correspondenceAddress != null){
+        if (correspondenceAddress != null) {
             return correspondenceAddress.getValue();
         }
         return residentialAddress.getValue();
@@ -76,7 +90,6 @@ public class User {
         this.bankAccountHistory.add(newBankAccount);
     }
 
-
     public int getAge() {
         return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
@@ -96,4 +109,11 @@ public class User {
         return dateOfRegistration;
     }
 
+    public String getNationalInsuranceNumber() {
+        return nationalInsuranceNumber;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
 }

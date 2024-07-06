@@ -9,10 +9,12 @@ public class UserTest {
 
 
     User user;
+    User userWithNationalInsurance;
 
     @BeforeEach()
     public void setUp(){
         user = new User("Graeme Scott", LocalDate.of(1996,9,18), "Narnia St",  "111111");
+        userWithNationalInsurance = new User("Linda Mooney", LocalDate.of(1970, 3, 28),"star wars st","22222", "G30030");
     }
 
     @Test
@@ -70,6 +72,16 @@ public class UserTest {
     public void testAddBankAccount(){
         user.addBankAccount("111111");
         assertEquals("111111", user.getBankAccount());
+    }
+
+    @Test
+    public void testNewConstructorWithNationalInsurance(){
+        assertEquals("Linda Mooney", userWithNationalInsurance.getName());
+        assertEquals(LocalDate.of(1970, 3, 28), userWithNationalInsurance.getDateOfBirth());
+        assertEquals("star wars st", userWithNationalInsurance.getAddress());
+        assertEquals("22222", userWithNationalInsurance.getBankAccount());
+        assertEquals("G30030", userWithNationalInsurance.getNationalInsuranceNumber());
+        assertFalse(userWithNationalInsurance.isProspect);
     }
 
 
